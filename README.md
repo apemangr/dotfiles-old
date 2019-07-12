@@ -1,5 +1,5 @@
 # i3-customization
-### Package list:
+## Package list:
 -polybar
 -networkmanager-dmenu-git
 -UbuntuMono Nerd Font
