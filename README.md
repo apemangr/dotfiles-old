@@ -6,7 +6,7 @@
 -rufi
 -compton
 
-Scripts:
+## Scripts:
 -al-polybar-session
 -check-network
 -updates
