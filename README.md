@@ -1,4 +1,4 @@
-# i3-customization
+# dotfiles
 ## Package list:
 -polybar
 -networkmanager-dmenu-git
