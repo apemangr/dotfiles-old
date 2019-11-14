@@ -1,3 +1,12 @@
+;8888888b.  8888888888 8888888888        d8888 888     888 888      88888888888 
+;888  "Y88b 888        888              d88888 888     888 888          888     
+;888    888 888        888             d88P888 888     888 888          888     
+;888    888 8888888    8888888        d88P 888 888     888 888          888     
+;888    888 888        888           d88P  888 888     888 888          888     
+;888    888 888        888          d88P   888 888     888 888          888     
+;888  .d88P 888        888         d8888888888 Y88b. .d88P 888          888     
+;8888888P"  8888888888 888        d88P     888  "Y88888P"  88888888     888     
+                                                                               
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
@@ -9,31 +18,23 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(column-number-mode t)
  '(cua-mode t nil (cua-base))
- '(cursor-type (quote bar))
- '(custom-enabled-themes (quote (solarized-dark)))
+ '(custom-enabled-themes (quote (doom-one)))
  '(custom-safe-themes
    (quote
-    ("0598c6a29e13e7112cfbc2f523e31927ab7dce56ebb2016b567e1eff6dc1fd4f" "a2cde79e4cc8dc9a03e7d9a42fabf8928720d420034b66aecc5b665bbf05d4e9" "5f27195e3f4b85ac50c1e2fac080f0dd6535440891c54fcfa62cdcefedf56b1b" default)))
- '(delete-selection-mode t)
- '(display-line-numbers t)
- '(ede-project-directories (quote ("/home/apeman")))
+    ("2d1fe7c9007a5b76cea4395b0fc664d0c1cfd34bb4f1860300347cdad67fb2f9" default)))
  '(frame-resize-pixelwise t)
+ '(helm-completion-style (quote emacs))
  '(inhibit-startup-screen t)
  '(menu-bar-mode nil)
  '(package-archives
    (quote
     (("gnu" . "https://elpa.gnu.org/packages/")
-     ("melpa" . "https://melpa.org/packages/")
-     ("melpa-stable" . "https://stable.melpa.org/packages/"))))
+     ("melpa" . "https://melpa.org/packages/"))))
  '(package-selected-packages
    (quote
-    (page-break-lines all-the-icons dashboard latex-extra latex-preview-pane latex-unicode-math-mode org-bullets auctex auto-complete-c-headers auto-complete iedit flycheck solarized-theme ido-vertical-mode treemacs yasnippet quickrun monokai-theme)))
+    (dashboard doom-modeline doom-themes flycheck quickrun org-bullets auctex helm ido-vertical-mode company treemacs yasnippet)))
  '(scroll-bar-mode nil)
- '(show-paren-mode t)
- '(tex-directory "/home/apeman/Downloads/tree-dvips/")
- '(tex-main-file "")
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -42,24 +43,76 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Source Code Pro" :foundry "ADBO" :slant normal :weight normal :height 113 :width normal)))))
 
-;Yasnippet
-;(require 'yasnippet)
+
+
+;8888888b.         d8888  .d8888b.  888    d8P         d8888  .d8888b.  8888888888  .d8888b.  
+;888   Y88b       d88888 d88P  Y88b 888   d8P         d88888 d88P  Y88b 888        d88P  Y88b 
+;888    888      d88P888 888    888 888  d8P         d88P888 888    888 888        Y88b.      
+;888   d88P     d88P 888 888        888d88K         d88P 888 888        8888888     "Y888b.   
+;8888888P"     d88P  888 888        8888888b       d88P  888 888  88888 888            "Y88b. 
+;888          d88P   888 888    888 888  Y88b     d88P   888 888    888 888              "888 
+;888         d8888888888 Y88b  d88P 888   Y88b   d8888888888 Y88b  d88P 888        Y88b  d88P 
+;888        d88P     888  "Y8888P"  888    Y88b d88P     888  "Y8888P88 8888888888  "Y8888P"  
+
+;;; YASNIPPET ;;;
 (yas-global-mode 1)
 (define-key global-map (kbd "C-c C-y") 'yas-new-snippet)
+(defun yas/org-very-safe-expand ()
+(let ((yas/fallback-behavior 'return-nil)) (yas/expand)))
+(add-hook 'org-mode-hook
+(lambda ()
+(make-variable-buffer-local 'yas/trigger-key)
+(setq yas/trigger-key [tab])
+(add-to-list 'org-tab-first-hook 'yas/org-very-safe-expand)
+(define-key yas/keymap [tab] 'yas/next-field)))
 
-;Para activar el autorun
-(global-set-key (kbd "<f5>") 'quickrun-shell)
 
-;Doble signo automático
-(electric-pair-mode 1)
-(setq electric-pair-pairs
-      '(
-        (?\" . ?\")
-	(?\< . ?\>)
-        (?\{ . ?\})))
+;;; COMPANY ;;;
+(add-hook 'after-init-hook 'global-company-mode)
+(setq company-minimum-prefix-length 1)
+(setq company-idle-delay 0)
+  (defun check-expansion ()
+    (save-excursion
+      (if (looking-at "\\_>") t
+        (backward-char 1)
+        (if (looking-at "\\.") t
+          (backward-char 1)
+          (if (looking-at "->") t nil)))))
+  (defun do-yas-expand ()
+    (let ((yas/fallback-behavior 'return-nil))
+      (yas/expand)))
+  (defun tab-indent-or-complete ()
+    (interactive)
+    (if (minibufferp)
+        (minibuffer-complete)
+      (if (or (not yas/minor-mode)
+              (null (do-yas-expand)))
+          (if (check-expansion)
+              (company-complete-common)
+            (indent-for-tab-command)))))
+(global-set-key [tab] 'tab-indent-or-complete)
 
+;;; FLYCHECK ;;;
+(global-flycheck-mode)
+
+;;; ACE-WINDOW ;;;
+(define-key global-map (kbd "M-o") 'ace-window)
+(ace-window-display-mode 1)
+
+;;; HELM ;;;
+(helm-mode 1)
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "C-x C-f") #'helm-find-files)
+
+;;; IDO-VERTICAL-MODE ;;;
+(ido-mode 1)
+(ido-vertical-mode 1)
+
+;;; IEDIT ;;;
+(define-key global-map (kbd "C-c ;") 'iedit-mode)
+
+;;; MOVE LINES WITH ALT ;;;
 (defun move-line (n)
-  "Move the current line up or down by N lines."
   (interactive "p")
   (setq col (current-column))
   (beginning-of-line) (setq start (point))
@@ -67,52 +120,39 @@
   (let ((line-text (delete-and-extract-region start end)))
     (forward-line n)
     (insert line-text)
-    ;; restore point to original column in moved line
     (forward-line -1)
     (forward-char col)))
-
 (defun move-line-up (n)
-  "Move the current line up by N lines."
   (interactive "p")
   (move-line (if (null n) -1 (- n))))
-
 (defun move-line-down (n)
-  "Move the current line down by N lines."
   (interactive "p")
   (move-line (if (null n) 1 n)))
-
-;Move lines with ALT
 (global-set-key (kbd "M-<up>") 'move-line-up)
 (global-set-key (kbd "M-<down>") 'move-line-down)
 
-;Ido-mode-vertical
-(ido-mode 1)
-(ido-vertical-mode 1)
-
-;iedit
-(define-key global-map (kbd "C-c ;") 'iedit-mode)
-
-;Auto-complete
-;(require 'auto-complete)
-;(require 'auto-complete-config)
-(setq ac-auto-show-menu 0)
-(ac-config-default)
-
-;Treemacs
-(define-key global-map (kbd "C-c t") 'treemacs)
-
-;flycheck
-(global-flycheck-mode)
-
-	
-(load "auctex.el" nil t t)
-(load "preview-latex.el" nil t t)
-
-(setq TeX-view-program-list '(("zathura" "zathura --page=%(outpage) %o")))
-
-;org-bullets
+;;; ORG-BULLETS ;;;
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
-;Dashboard
+;;; QUICKRUN ;;;
+(global-set-key (kbd "<f5>") 'quickrun-shell)
+
+;;; AUTO PARENTESIS ;;;
+  (electric-pair-mode 1)
+  (setq electric-pair-pairs
+	'(
+	  (?\" . ?\")
+	  (?\' . ?\')
+	  (?\< . ?\>)
+	  (?\{ . ?\})))
+
+;;; DOOM MODELINE ;;;
+(require 'doom-modeline)
+  (doom-modeline-mode 1)
+  (setq inhibit-compacting-font-caches t)
+
+;;; DASHBOARD ;;;
 (dashboard-setup-startup-hook)
-(setq dashboard-set-footer nil)
+(setq dashboard-set-heading-icons t)
+(setq dashboard-set-file-icons t)
+(setq dashboard-startup-banner 'logo)
