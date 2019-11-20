@@ -156,3 +156,7 @@
 (setq dashboard-set-heading-icons t)
 (setq dashboard-set-file-icons t)
 (setq dashboard-startup-banner 'logo)
+
+;;; BLINKING BRACKETS ;;;
+(show-paren-mode 1)
+(setq show-paren-style 'expression)
