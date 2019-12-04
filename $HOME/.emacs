@@ -160,3 +160,5 @@
 ;;; BLINKING BRACKETS ;;;
 (show-paren-mode 1)
 (setq show-paren-style 'expression)
+
+(global-set-key (kbd "C-h") 'kill-whole-line)
