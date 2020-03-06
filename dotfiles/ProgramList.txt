@@ -30,6 +30,8 @@ ttf-dejavu
 ttf-liberation
 virtualbox
 virtualbox-host-dkms
+xorg-xset
+xorg-xsetroot
 xfce4-settings
 evince-no-gnome
 zsh
