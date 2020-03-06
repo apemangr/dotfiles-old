@@ -1,0 +1,8 @@
+configuration {
+	modi: "run,drun";	
+	show-icons: true;
+	font: "JetBrainsMono Nerd Font 15";
+	display-drun: "Search";
+
+}
+@import "/home/apeman/.local/share/rofi/themes/slate.rasi"

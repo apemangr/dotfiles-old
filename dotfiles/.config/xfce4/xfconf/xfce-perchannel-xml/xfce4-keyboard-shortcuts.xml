@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<channel name="xfce4-keyboard-shortcuts" version="1.0">
+  <property name="commands" type="empty">
+    <property name="default" type="empty">
+      <property name="&lt;Alt&gt;F1" type="empty"/>
+      <property name="&lt;Alt&gt;F2" type="empty">
+        <property name="startup-notify" type="empty"/>
+      </property>
+      <property name="&lt;Alt&gt;F3" type="empty">
+        <property name="startup-notify" type="empty"/>
+      </property>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;Delete" type="empty"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;l" type="empty"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;t" type="empty"/>
+      <property name="XF86Display" type="empty"/>
+      <property name="&lt;Super&gt;p" type="empty"/>
+      <property name="&lt;Primary&gt;Escape" type="empty"/>
+      <property name="XF86WWW" type="empty"/>
+      <property name="XF86Mail" type="empty"/>
+      <property name="Print" type="empty"/>
+    </property>
+    <property name="custom" type="empty">
+      <property name="&lt;Alt&gt;F3" type="empty">
+        <property name="startup-notify" type="bool" value="true"/>
+      </property>
+      <property name="&lt;Alt&gt;F2" type="empty">
+        <property name="startup-notify" type="bool" value="true"/>
+      </property>
+      <property name="override" type="bool" value="true"/>
+      <property name="AudioRaiseVolume" type="string" value="/home/apeman/Scripts/volume.sh up"/>
+      <property name="AudioLowerVolume" type="string" value="/home/apeman/Scripts/volume.sh down"/>
+      <property name="AudioMute" type="string" value="/home/apeman/Scripts/volume.sh mute"/>
+      <property name="Control_R" type="string" value="alacritty -e zsh -i -c &quot;lf&quot;"/>
+      <property name="&lt;Super&gt;q" type="string" value="emacs"/>
+      <property name="&lt;Super&gt;w" type="string" value="google-chrome-stable"/>
+      <property name="&lt;Super&gt;e" type="string" value="$TERMINAL -e zsh -i -c &quot;lf&quot;"/>
+      <property name="&lt;Super&gt;Return" type="string" value="$TERMINAL"/>
+      <property name="&lt;Shift&gt;&lt;Super&gt;u" type="string" value="betterlockscreen -l"/>
+      <property name="&lt;Shift&gt;&lt;Super&gt;e" type="string" value="bspc quit"/>
+      <property name="&lt;Shift&gt;&lt;Super&gt;r" type="string" value="bspc wm -r"/>
+      <property name="&lt;Shift&gt;&lt;Super&gt;q" type="string" value="bspc node -c"/>
+      <property name="&lt;Super&gt;i" type="string" value="bspc node -k"/>
+      <property name="&lt;Super&gt;m" type="string" value="bspc desktop -l next"/>
+      <property name="&lt;Super&gt;y" type="string" value="bspc node newest.marked.local -n newest.!automatic.local"/>
+      <property name="&lt;Super&gt;g" type="string" value="bspc node -s biggest"/>
+      <property name="&lt;Alt&gt;&lt;Super&gt;Left" type="string" value="bspc desktop -f prev"/>
+      <property name="&lt;Alt&gt;&lt;Super&gt;Right" type="string" value="bspc desktop -f next"/>
+      <property name="&lt;Alt&gt;Tab" type="string" value="/home/apeman/Scripts/dropdown.sh &quot;st -c dropdown&quot; &quot;dropdown&quot; 0 0 100 30 20"/>
+    </property>
+  </property>
+  <property name="xfwm4" type="empty">
+    <property name="default" type="empty">
+      <property name="&lt;Alt&gt;Insert" type="empty"/>
+      <property name="Escape" type="empty"/>
+      <property name="Left" type="empty"/>
+      <property name="Right" type="empty"/>
+      <property name="Up" type="empty"/>
+      <property name="Down" type="empty"/>
+      <property name="&lt;Alt&gt;Tab" type="empty"/>
+      <property name="&lt;Alt&gt;&lt;Shift&gt;Tab" type="empty"/>
+      <property name="&lt;Alt&gt;Delete" type="empty"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;Down" type="empty"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;Left" type="empty"/>
+      <property name="&lt;Shift&gt;&lt;Alt&gt;Page_Down" type="empty"/>
+      <property name="&lt;Alt&gt;F4" type="empty"/>
+      <property name="&lt;Alt&gt;F6" type="empty"/>
+      <property name="&lt;Alt&gt;F7" type="empty"/>
+      <property name="&lt;Alt&gt;F8" type="empty"/>
+      <property name="&lt;Alt&gt;F9" type="empty"/>
+      <property name="&lt;Alt&gt;F10" type="empty"/>
+      <property name="&lt;Alt&gt;F11" type="empty"/>
+      <property name="&lt;Alt&gt;F12" type="empty"/>
+      <property name="&lt;Primary&gt;&lt;Shift&gt;&lt;Alt&gt;Left" type="empty"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;End" type="empty"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;Home" type="empty"/>
+      <property name="&lt;Primary&gt;&lt;Shift&gt;&lt;Alt&gt;Right" type="empty"/>
+      <property name="&lt;Primary&gt;&lt;Shift&gt;&lt;Alt&gt;Up" type="empty"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;KP_1" type="empty"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;KP_2" type="empty"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;KP_3" type="empty"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;KP_4" type="empty"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;KP_5" type="empty"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;KP_6" type="empty"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;KP_7" type="empty"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;KP_8" type="empty"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;KP_9" type="empty"/>
+      <property name="&lt;Alt&gt;space" type="empty"/>
+      <property name="&lt;Shift&gt;&lt;Alt&gt;Page_Up" type="empty"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;Right" type="empty"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;d" type="empty"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;Up" type="empty"/>
+      <property name="&lt;Super&gt;Tab" type="empty"/>
+      <property name="&lt;Primary&gt;F1" type="empty"/>
+      <property name="&lt;Primary&gt;F2" type="empty"/>
+      <property name="&lt;Primary&gt;F3" type="empty"/>
+      <property name="&lt;Primary&gt;F4" type="empty"/>
+      <property name="&lt;Primary&gt;F5" type="empty"/>
+      <property name="&lt;Primary&gt;F6" type="empty"/>
+      <property name="&lt;Primary&gt;F7" type="empty"/>
+      <property name="&lt;Primary&gt;F8" type="empty"/>
+      <property name="&lt;Primary&gt;F9" type="empty"/>
+      <property name="&lt;Primary&gt;F10" type="empty"/>
+      <property name="&lt;Primary&gt;F11" type="empty"/>
+      <property name="&lt;Primary&gt;F12" type="empty"/>
+    </property>
+  </property>
+  <property name="providers" type="array">
+    <value type="string" value="commands"/>
+  </property>
+</channel>
