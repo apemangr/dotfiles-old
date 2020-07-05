@@ -24,17 +24,14 @@ super + @space
 # emacs
 super + q
 	emacs
+
 # chrome
 super + w
-      	google-chrome-stable
+      	chromium
 
 # lf
 super + e
       	$TERMINAL -e zsh -i -c "lf"
-
-# scratchpad
-alt + slash
-    .~/Scripts/scratchy.sh
 
 #
 # wm independent hotkeys
@@ -42,7 +39,7 @@ alt + slash
 
 # terminal emulator
 super + Return
-	alacritty
+	mate-terminal
 
 # lock the screen
 super + shift + u

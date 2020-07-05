@@ -1,6 +1,7 @@
 #! /bin/sh
 
 ### AUTOSTART ###
+
 sxhkd &
 xinput set-prop 20 "libinput Tapping Enabled" 1 &
 setxkbmap latam &
@@ -11,16 +12,19 @@ dropbox &
 exec /home/apeman/.config/polybar/launch.sh &
 xsetroot -cursor_name left_ptr &
 
-### CONFIG ###
 bspc monitor -d I II III IV V VI VII VIII IX X
+
 bspc config border_width         0
-bspc config window_gap           10
+bspc config window_gap           0
+
 bspc config split_ratio          0.52
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
-### WINDOWS RULES ####
-bspc rule -a Mate-terminal state=floating rectangle=800x450+600+350
+#bspc rule -a Gimp desktop='^8' state=floating follow=on
+bspc rule -a Alacritty state=floating rectangle=800x450+600+350
 bspc rule -a UnityHub state=floating
+bspc rule -a Kupfer.py focus=on
+bspc rule -a Screenkey manage=off
 bspc rule -a Emacs state=floating rectangle=550x750+600+10
 bspc rule -a Unity state=floating
