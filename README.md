@@ -1,9 +1,9 @@
 # dotfiles
 ## Package list:
--polybar
+-AwesomeWM
 -networkmanager-dmenu-git
 -UbuntuMono Nerd Font
--rufi
+
 -compton
 
 ## Scripts:
