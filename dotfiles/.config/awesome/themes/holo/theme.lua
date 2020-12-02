@@ -31,6 +31,7 @@ theme.black3					= "#665C54"
 theme.icon_theme 				= "Papirus-Dark"
 theme.font                                      = "Roboto 12"
 theme.taglist_font                              = "Roboto Condensed Regular 12"
+theme.tasklist_font                             = "Roboto Condensed Regular 12"
 theme.fg_normal                                 = theme.white
 theme.fg_focus                                  = theme.blue
 theme.bg_focus                                  = theme.black1
@@ -42,10 +43,12 @@ theme.border_normal                             = theme.bg_normal
 theme.border_focus                              = theme.gray
 theme.taglist_fg_focus                          = theme.white
 theme.tasklist_bg_normal                        = theme.bg_normal
-theme.tasklist_fg_focus                         = theme.blue
-theme.menu_height                               = dpi(40)
-theme.menu_width                                = dpi(280)
-theme.menu_icon_size                            = dpi(20)
+theme.tasklist_font_focus                       = "Roboto Condensed Bold 12"
+theme.tasklist_bg_focus                         = theme.black1
+theme.tasklist_fg_focus                         = theme.green
+theme.menu_height                               = dpi(30)
+theme.menu_width                                = dpi(250)
+theme.menu_icon_size                            = dpi(15)
 theme.useless_gap                               = dpi(5)
 theme.tasklist_plain_task_name                  = false
 theme.tasklist_disable_icon                     = false
@@ -243,7 +246,7 @@ function theme.at_screen_connect(s)
     -- Create a taglist widget
     s.mytaglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, awful.util.taglist_buttons, { bg_focus = theme.black2 })
 
-    mytaglistcont = wibox.container.background(s.mytaglist, theme.bg_focus, gears.shape.rectangle)
+    mytaglistcont = wibox.container.background(s.mytaglist, theme.bg_focus, gears.shape.rounded_rect)
     s.mytag = wibox.container.margin(mytaglistcont, dpi(6), dpi(6), dpi(2), dpi(3))
 
 
@@ -257,11 +260,11 @@ function theme.at_screen_connect(s)
     style    = {
        shape_border_width = 2,
         shape_border_color = theme.black3,
-        shape  = gears.shape.rounded_bar,
-
+        shape  = gears.shape.rounded_rect,
     },
     layout   = {
-        spacing = 5,
+       spacing = 5,
+       max_widget_size=250,
         layout  = wibox.layout.flex.horizontal
     },
     widget_template = {
@@ -283,7 +286,7 @@ function theme.at_screen_connect(s)
                 layout = wibox.layout.fixed.horizontal,
             },
 	   left  = 1,
-            right = 1,
+            right = 10,
 	    top = 0,
 	    bottom= 1,
             widget = wibox.container.margin
@@ -293,14 +296,13 @@ function theme.at_screen_connect(s)
 
     },
     }
-    
 
 
 
     
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "bottom", screen = s,bg = theme.bg_normal, height = dpi(30) })
-    s.borderwibox = awful.wibar({ position = "bottom", screen = s, height = dpi(3), bg = theme.bg_normal, x = dpi(0), y = dpi(33)})
+    s.mywibox = awful.wibar({ position = "bottom", screen = s, border_width=4 ,border_color =theme.bg_normal, bg = theme.bg_normal, height = dpi(30) })
+    --s.borderwibox = awful.wibar({ position = "bottom", screen = s, height = dpi(3), bg = theme.bg_normal, x = dpi(0), y = dpi(33)})
     -- Add widgets to the wibox
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
